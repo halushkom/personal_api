@@ -4,10 +4,10 @@ import {ICompany} from '../interface/company_interface'
 
 
 const companySchema = new Schema<ICompany>({
-    _id: {
-        type: String,
-        required: true,
-    },
+    // _id: {
+    //     type: String,
+    //     required: true,
+    // },
     companyName: {
         type: String,
     },
@@ -20,3 +20,12 @@ const companySchema = new Schema<ICompany>({
 })
 
 const Company = mongo.model<ICompany>('company', companySchema)
+
+
+Company.createRecord = async (data: ICompany) => {
+    return Company.create({
+        ...data
+    })
+}
+
+export {Company}
